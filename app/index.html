@@ -3,14 +3,23 @@
 <head>
   <meta charset="utf-8">
   <title>My AngularJS App</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jqueery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 </head>
-<body ng-app="ToDoList">
-<div ng-controller="MainController">
-  <div ng-repeat="item in list">
-    <li>{{ item }}}</li>
+<body ng-app="ToDoList" ng-controller="MainController">
+<div class="jumbotron">
+  <h1>My To-Do List</h1>
+  <div class="row">
+    <input type="text" class="form-control form-control-lg col-sm-10" ng-model="addToDo">
+    <button type="button" class="btn btn-danger col-sm-2" ng-click="addItem()">+</button>
+    <button type="button" class="btn btn-default" id="rmvMe" ng-click="removeItem()" style="margin-top: 20px"> <h5 style="color: crimson">Clear Completed</h5> </button>
   </div>
-  <input ng-model="addToDo">
-  <button ng-click="addItem()">Add to ToDo</button>
+</div>
+
+<div ng-repeat="x in list" style="margin-left: 40px">
+  <input type="checkbox" ng-model="x.done" > <span ng-bind="x.toDo"></span>
 </div>
 
 <script src="lib/angular/angular.js"></script>
